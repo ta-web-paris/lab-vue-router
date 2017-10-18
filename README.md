@@ -1,7 +1,7 @@
 # lab-vue-router
 
 
-#Iteration 0: Set Up Your Server
+# Iteration 0: Set Up Your Server
 
 Set up the fake API:
 
@@ -25,7 +25,7 @@ delete("/movies/:id") = deletes specific movie
 Now your local server is listenting to server requestsm and you can focus on the client side!
 
 
-#Iteration 1: Create Your Server to Make API Calls
+# Iteration 1: Create Your Server to Make API Calls
 
 Work on api.js file. This file will be our service, where we will write all our methods to make API calls.
 
@@ -34,7 +34,7 @@ Complete the different functions in the file to make the correct API calls.
 Make sure these methods are making the correct calls to your server.
 
 
-#Iteration 2: Routing
+# Iteration 2: Routing
 
 Use vue server to create the following routes:
 
@@ -47,12 +47,12 @@ Use vue server to create the following routes:
 /movies/new = a form to add a new movie
 
 
-#Iteration 3: Patch It Together
+# Iteration 3: Patch It Together
 
 Create links on every route/component, to allow the user to logically navigate across the app.
 
 
-#Bonus
+# Bonus
 
 Improve user exprience with semantic success messages (for edit and add)
 
