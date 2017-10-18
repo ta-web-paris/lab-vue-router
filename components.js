@@ -1,6 +1,6 @@
-Vue.component("MovieCard", {
+Vue.component('MovieCard', {
   props: {
-    movie: Object
+    movie: Object,
   },
   template: `
 	  	<section>
@@ -10,12 +10,12 @@ Vue.component("MovieCard", {
 		    <p> {{movie.synopsis}} </p>
 		    <img :src="movie.poster" alt="poster" height="500px">
   		</section>
-	`
+	`,
 });
 
-Vue.component("MovieForm", {
+Vue.component('MovieForm', {
   props: {
-    defaultValues: Object
+    defaultValues: Object,
   },
   template: `
 	<form @submit.prevent="submit()">
@@ -29,7 +29,7 @@ Vue.component("MovieForm", {
 	`,
   data() {
     return {
-      movie: {}
+      movie: {},
     };
   },
   mounted() {
@@ -43,7 +43,7 @@ Vue.component("MovieForm", {
       return Object.assign({}, this.movie);
     },
     submit() {
-      this.$emit("submit", this.movieCopy());
-    }
-  }
+      this.$emit('submit', this.movieCopy());
+    },
+  },
 });
