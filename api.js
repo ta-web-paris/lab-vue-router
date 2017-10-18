@@ -1,13 +1,11 @@
 const service = axios.create({
-  baseURL:
-   "http://localhost:3000/"
+  baseURL: "http://localhost:3000/"
 });
 
 const api = {
-  getAll: () => service.get("/movies").then(res => res.data), 
-  getOne: id => service.get(`/movies/${id}`).then(res => res.data),
-  addOne: info => service.post("/movies", info).then(res => res.data),
-  editOne: (id, info) => service.put(`/movies/${id}`, info).then(res => res.data),
-  deleteOne: id => service.delete(`/movies/${id}`).then(res => res)
+  getAll: () => null, // Return instead a promise containing all the movies,
+  getOne: id => null, // Return instead a promise containing one movie,
+  addOne: info => null, // Make the request to add amovie and return a promise containing the added movie,
+  editOne: (id, info) => null, // Make the request to edit a movie and return a promise containing the edited movie,
+  deleteOne: id => null // Make the request to delete a movie
 };
-
