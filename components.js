@@ -1,3 +1,53 @@
+const Home = {
+  template: `
+  <div>
+  <h1>Hello</h1>
+
+  <a href="movies">View all movies</a>
+  <a href="movies/new">Add a movie</a>
+  </div>
+  `
+};
+
+const MoviesList = {
+  data() {
+    return {
+      movies: []
+    };
+  },
+  template: `
+  <div>
+  <h1>Movies List</h1>
+  <ul>
+    <li v-for="singleMovie in movies"><router-link to="movies/:id"> {{ singleMovie.title }} </router-link></li>
+  </ul>
+  </div>
+  `,
+  created() {
+    api.getAll().then(movies => {
+      this.movies = movies;
+    });
+  }
+};
+
+const MoviePage = {
+  data () {
+    return {
+      movie: null,
+    }
+  },
+  template: `
+  <div>
+    <movie-card> </movie-card>
+  </div>
+  `,
+  created() {
+    api.getAll(this.$route.params.id).then(movie => {
+      this.movie = movie;
+    });
+  }
+};
+
 Vue.component("MovieCard", {
   props: {
     movie: Object
@@ -10,7 +60,7 @@ Vue.component("MovieCard", {
 		    <p> {{movie.synopsis}} </p>
 		    <img :src="movie.poster" alt="poster" height="500px">
   		</section>
-	`
+	`,
 });
 
 Vue.component("MovieForm", {
