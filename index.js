@@ -68,7 +68,7 @@ const AddMovie = {
   },
   template: `
   <div>
-    <movie-form @submit="addOne()"></movie-form>
+    <movie-form ></movie-form>
   </div>
   `
 };
