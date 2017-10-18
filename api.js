@@ -1,5 +1,5 @@
 const service = axios.create({
-	baseURL: "http://localhost:3000/movies"
+	baseURL: "http://localhost:3000"
 });
 
 const api = {
