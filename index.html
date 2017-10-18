@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Vue Rounting Ex</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.css" />
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@2.5.2/dist/vue.min.js" type="text/javascript"></script>
@@ -14,7 +14,18 @@
 </head>
 
 <body>
-  <div id="app">
+  
+  <div id="app" class="container">
+    <h2 class="title">Hello!</h2>
+
+    <router-link to="/welcome">Welcome page</router-link>
+    <router-link to="/movies">Movies page</router-link>
+
+
+
+
+     <router-view></router-view>
+
   </div>
   <script src="api.js" type="text/javascript"></script>
   <script src="components.js" type="text/javascript"></script>
