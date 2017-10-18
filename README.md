@@ -3,9 +3,7 @@
 
 #Iteration 0: Set Up Your Server
 Set up the fake API:
-
 $ npm install -g json-server
-
 $ json-server --watch db.json
 
 This is the API spec you can use now:
