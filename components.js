@@ -1,6 +1,56 @@
-Vue.component('MovieCard', {
+const Home = {
+  template: `
+  <div>
+  <h1>Hello</h1>
+
+  <a href="movies">View all movies</a>
+  <a href="movies/new">Add a movie</a>
+  </div>
+  `
+};
+
+const MoviesList = {
+  data() {
+    return {
+      movies: []
+    };
+  }, // need to fix the <router-link> in the following template:
+  template: `
+  <div>
+  <h1>Movies List</h1>
+  <ul>
+    <li v-for="singleMovie in movies"><router-link to="movies/:id"> {{ singleMovie.title }} </router-link></li>
+  </ul>
+  </div>
+  `,
+  created() {
+    api.getAll().then(movies => {
+      this.movies = movies;
+    });
+  }
+};
+
+const MoviePage = {
+  data () {
+    return {
+      movie: null,
+    }
+  },
+  template: `
+  <div>
+    <movie-card> </movie-card>
+  </div>
+  `,
+  created() {
+    api.getAll(this.$route.params.id).then(movie => {
+      this.movie = movie;
+    });
+  }
+};
+
+Vue.component("MovieCard", {
   props: {
-    movie: Object,
+    movie: Object
   },
   template: `
 	  	<section>
@@ -13,9 +63,9 @@ Vue.component('MovieCard', {
 	`,
 });
 
-Vue.component('MovieForm', {
+Vue.component("MovieForm", {
   props: {
-    defaultValues: Object,
+    defaultValues: Object
   },
   template: `
 	<form @submit.prevent="submit()">
@@ -29,7 +79,7 @@ Vue.component('MovieForm', {
 	`,
   data() {
     return {
-      movie: {},
+      movie: {}
     };
   },
   mounted() {
@@ -43,7 +93,7 @@ Vue.component('MovieForm', {
       return Object.assign({}, this.movie);
     },
     submit() {
-      this.$emit('submit', this.movieCopy());
-    },
-  },
+      this.$emit("submit", this.movieCopy());
+    }
+  }
 });
