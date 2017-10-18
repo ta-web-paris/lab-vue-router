@@ -14,7 +14,7 @@ const MoviesList = {
     return {
       movies: []
     };
-  },
+  }, // need to fix the <router-link> in the following template:
   template: `
   <div>
   <h1>Movies List</h1>
