@@ -1,6 +1,38 @@
-Vue.component('MovieCard', {
+const HomePage = Vue.component("HomePage", {
+  template: `
+  <div>
+   <h1>Welcome</h1>
+   <router-link to="/movies/">Movies</router-link>
+   </div>
+	`
+});
+const Movies = Vue.component("Movies", {
+  data() {
+    return {
+      movies: []
+    };
+  },
+  template: `
+  <div>
+   <h1>Movies List</h1>
+   <router-link to="/">Go back to Homepage</router-link>
+   <ul>
+   <li v-for="movie in movies" >
+   <router-link :to="'/movies/' +movie.id ">{{movie.title}}</router-link>
+   
+   </li></ul>
+   </div>
+  `,
+  created() {
+    api.getAll().then(movies => {
+      this.movies = movies;
+    });
+  }
+});
+
+const MovieCard = Vue.component("MovieCard", {
   props: {
-    movie: Object,
+    movie: Object
   },
   template: `
 	  	<section>
@@ -10,12 +42,17 @@ Vue.component('MovieCard', {
 		    <p> {{movie.synopsis}} </p>
 		    <img :src="movie.poster" alt="poster" height="500px">
   		</section>
-	`,
+  `,
+  created() {
+    api.getOne(this.$route.params.id).then(movie => {
+      this.movie = movie;
+    });
+  }
 });
 
-Vue.component('MovieForm', {
+const MovieForm = Vue.component("MovieForm", {
   props: {
-    defaultValues: Object,
+    defaultValues: Object
   },
   template: `
 	<form @submit.prevent="submit()">
@@ -29,8 +66,13 @@ Vue.component('MovieForm', {
 	`,
   data() {
     return {
-      movie: {},
+      movie: {}
     };
+  },
+  created() {
+    api.addOne(newMovie).then(movie => {
+      this.movie = movie;
+    });
   },
   mounted() {
     this.populateForm();
@@ -43,7 +85,7 @@ Vue.component('MovieForm', {
       return Object.assign({}, this.movie);
     },
     submit() {
-      this.$emit('submit', this.movieCopy());
-    },
-  },
+      this.$emit("submit", this.movieCopy());
+    }
+  }
 });
